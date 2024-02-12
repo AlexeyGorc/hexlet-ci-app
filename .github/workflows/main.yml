@@ -6,7 +6,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x, 17.x, 18.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -16,8 +16,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - run: make setup
-      - run: make start
+      - name: Setup app
+        run: make setup
 
-      - run: make test
-      - run: make lint
+      - name: Testing
+        run: make test
+      - name: Linting
+        run: make lint

@@ -13,7 +13,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         env:
-          SNYK_TOKEN: ${{ Key.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secret.SNYK_TOKEN }}
           
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
